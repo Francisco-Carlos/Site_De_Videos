@@ -1,0 +1,67 @@
+{% extends 'page-model.html'%}
+{% block style %}
+    <style>
+        div{
+            background-color:black;
+            opacity: 0.9;
+        }
+        h4,h5{
+            color:white;
+            text-align: center;
+        }
+        form,p{
+            color:white;
+        }
+        a{
+            margin-left:80px;;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+<br>
+<div class="modal fade" id="comentar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Comentar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <form method="POST" enctype="multipart/form-data" >
+                 {% csrf_token %}
+                {{comentario.as_p}}
+                <button class="btn btn-primary">Comentar</button>
+            </form>
+          </div>
+      </div>
+      <div class="modal-footer">
+          <p> Depois de comentar voce terar que clicar em detalhes para ver seu comentario</p>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" style="margin-left:25px;
+        border:2px solid #F8F8FF;border-radius:20px;">
+
+    {% for v in vid %}
+            <div class="col-sm-4" style="">
+                <br>
+                <div class="container" style="margin-left:10px"><h4>{{v.Titulo}}</h4></div>
+                <video width="400" class="rounded" style="margin-left:10px;" controls>
+                    <source  src="{{v.Video.url}}">
+                </video>
+                <a href="/heart/detalhe/{{v.id}}"><i style='font-size:24px' class='fas'>&#xf550;</i></a>
+                <a href="heart/curtir" onclick=""><i style='font-size:24px' class='fas'>&#xf004;</i></a>
+                <a href="" data-toggle="modal" data-target="#comentar"><i style="font-size:24px" class="fas">&#xf4ad </i></a>
+                <br>
+            </div>
+        {%endfor%}
+    </div>
+
+</div>
+{% endblock %}

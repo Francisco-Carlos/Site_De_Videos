@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+<head>
+  <title>Mors movies</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="margin-left:35px;">
+    <!-- logo-->
+    <a class="navbar-brand" href="#">
+        <img src="{% static 'videos/morte.png'%}" alt="logo" width="50px;">
+    </a>
+
+    <!--links-->
+    <ul class="navbar-nav" style="text-align:center;">
+        <li class="nav-item">
+            <a class="nav-link" href="/"> Home</a>
+        </li>
+        <!-- barras -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Menu</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/heart/usuario/">perfil</a>
+                <a class="dropdown-item" href="/heart/cadastrar/">publicar</a>
+                <a class="dropdown-item" href="/heart/logout/">sair</a>
+            </div>
+        </li>
+        <li>
+            <audio controls style="margin-left:100px;">
+                <source src="{% static 'imagen/Egypt.mp3' %}" type="audio/mpeg">
+            </audio>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" method="GET" style="margin-left:100px;">
+                <input class="form-control mr-sm-2" type="text" name="seacher" id="seacher" placeholder="pesquisar">
+                <button class="btn btn-success" type="submit">pesquisar</button>
+            </form>
+        </li>
+    </ul>
+</nav>

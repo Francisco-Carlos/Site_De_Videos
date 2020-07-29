@@ -1,0 +1,49 @@
+{% extends 'page-model.html' %}
+{% load static %}
+{% block style %}
+    <style>
+        h4{
+            color:#191970;
+        }
+        p{
+            color:white;
+        }
+        br{
+            border-bottom:2px solid red;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+<br>
+<div class="row" style="margin-left:20px;">
+     <div class="col-sm-4">
+        <video controls width="400px" class="rounded">
+              <source  src="{{vid.Video.url}}">
+        </video>
+     </div>
+     <div class="col-sm-4">
+         <h1>Dados</h1>
+         <p><strong>Titulo: </strong>{{vid.Titulo}}</p>
+         <p><strong>Categoria: </strong>{{vid.Categoria}}</p>
+         <p><strong>Usuario:</strong>{{vid.user}}</p>
+         <a href="/" class="btn btn-primary"> Voltar</a>
+    </div>
+</div>
+<br>
+
+{% for c in com %}
+    {% for per in per%}
+    <div class="row" style="border-bottom:2px solid red; margin-left:40px;">
+        {% if c.user == per.Usuario %}
+            <img src="{{per.Foto.url}}" width="50px;">
+            <div class="col-sm-4">
+                 <h4>{{c.user}}</h4>
+                <p>{{c.Comentario}}</p>
+            </div>
+
+        {% endif %}
+    </div>
+    {% endfor%}
+{% endfor%}
+
+{% endblock %}

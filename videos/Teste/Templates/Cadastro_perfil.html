@@ -1,0 +1,27 @@
+{% extends 'page-model.html' %}
+{%block style%}
+    <style>
+        form{
+            color:white;
+            margin-left:100px;
+        }
+        h1{
+            color:white;
+            text-align:center;
+        }
+    </style>
+{% endblock%}
+{% block content %}
+<br>
+    <div class="form-group" style="width:500px">
+        <h1>Fazer um perfil</h1>
+        <p style="color:white;text-align:center;"> colocar um apelido uma foto e uma historia</p>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{perfil.as_p}}
+
+            <button class="btn btn-success">Salvar</button>
+            <a href="/" class="btn btn-primary">Voltar</a>
+        </form>
+    </div>
+{% endblock %}

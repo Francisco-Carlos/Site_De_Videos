@@ -1,0 +1,29 @@
+{% extends 'page-model.html'%}
+{% block content %}
+    <div class="content">
+        <form action="submit" method="POST" enctype="multipart/form-data" style="width:600px;margin-left:400px">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username"> Digite seu usuario (nao e o nickname)</label>
+                <input for="username" class="form-control" type="text" id="username" name="username">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="password"> Digite sua senha</label>
+                <input for="password" class="form-control" name="password" type="password" id="password">
+            </div>
+            <a href="/heart/Cadastrar_user/">Criar uma conta</a>
+            <br>
+            <div>
+                {% for message in messages %}
+                    <div class="alert alert-danger">
+                        <strong>erro:</strong>{{message}}
+                    </div>
+                {%endfor%}
+            </div>
+            <button class="btn btn-success" type="submit"> logar</button>
+            <a href="/" class="btn btn-primary">Voltar</a>
+
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'page-model.html' %}
+{% load static %}
+{% block style %}
+    <style>
+        div{
+            background: url({% static 'media/anjo.jpg'%})
+        }
+        h4,h1,p{
+            color:white;
+        }
+        a{
+
+        }
+    </style>
+{% endblock %}
+{% block content %}
+
+<br>
+    <div class="row">
+        <div class="container" style="border:5px solid white;padding:20px;border-radius:100px 50px;">
+        <div class="col-sm-4"  style="margin-left:380px;">
+            {% for p in per %}
+                {% if request.user == p.Usuario  %}
+                <div class="row" style="border-bottom:2px solid red;">
+                    <div class="col-sm-4" >
+                        <img src="{{p.Foto.url}}" class="rounded-circle"  width="150px;">
+                    </div>
+                </div>
+                <h1>{{p.NikeName}}</h1>
+                <h4>Historia</h4>
+                <p>{{p.Historia}}</p>
+                {%endif %}
+            {% endfor%}
+            <h2>Seus videos</h2>
+            <a href="/heart/cadastrar" class="btn btn-success">Cadastrar</a>
+            <a href="/" class="btn btn-primary">voltar</a>
+            <a href="/heart/Cadastrar_perfil/" class="btn btn-primary">Editar perfil</a>
+        </div>
+        </div>
+        <br>
+        <br>
+        {% for vi in vid %}
+            {% if vi.id < 50%}
+                {% if request.user == vi.user %}
+                <br>
+                <div class="col-sm-4" style="border:2px solid #F8F8FF;border-radius:20px;">
+                    <br>
+                    <div class="container" style="margin-left:10px"><h4>{{vi.Titulo}}</h4></div>
+                    <video width="400" class="rounded" style="margin-left:10px;" controls>
+                        <source  src="{{vi.Video.url}}">
+                    </video>
+                    <br>
+                </div>
+                {% endif %}
+            {% endif%}
+
+        {%endfor%}
+    </div>
+
+
+{% endblock %}

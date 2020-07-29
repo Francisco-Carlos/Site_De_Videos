@@ -1,0 +1,24 @@
+{% extends 'page-model.html' %}
+{% block style %}
+    <style>
+        h1,p{
+            color:white;
+            text-align:center;
+        }
+        form{
+            color:white;
+        }
+    </style>
+{% endblock%}
+{% block content %}
+    <h1>Criar Usuario</h1>
+    <p> voce poderar fazer publicar videos que voce criou ou baixou</p>
+    <div class="form-group">
+        <form method="POST" enctype="multipart/form-data" style="width:600px; margin-left:400px;">
+            {% csrf_token %}
+            {{usuarios.as_p}}
+            <button class="btn btn-success">enviar</button>
+            <a class="btn btn-primary" href="/">voltar</a>
+        </form>
+    </div>
+{% endblock %}

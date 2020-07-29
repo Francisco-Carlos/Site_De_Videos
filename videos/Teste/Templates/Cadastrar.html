@@ -1,0 +1,26 @@
+{% extends 'page-model.html' %}
+{% block style %}
+    <style>
+        form,p,h1{
+            color: white;
+        }
+        div{
+            margin-left: 250px;
+        }
+    </style>
+{% endblock%}
+{% block content %}
+    <br>
+    <div class="container">
+        <div class="form-group" style="width:500px;">
+            <h1>Cadastrar um Video</h1>
+            <p> Aqui e para voce publicar seus videos </p>
+            <form enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+                {{vid.as_p}}
+                <button class="btn btn-success"> Enviar</button>
+                <a class="btn btn-primary" href="/heart/usuario/">voltar</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}
